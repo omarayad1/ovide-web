@@ -7,6 +7,9 @@ class OvideWeb.Routers.Main extends Backbone.Router
 ide = new OvideWeb.Routers.Main()
 
 ide.on 'route:main', ->
-    $('body').html 'bateee5'
+    mainView = new OvideWeb.Views.Main()
+    mainView.render()
+    editorView = new OvideWeb.Views.Editor()
+    editorView.render()
 
 Backbone.history.start()

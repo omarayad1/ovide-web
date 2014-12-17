@@ -11,9 +11,10 @@ class OvideWeb.Views.Main extends Backbone.View
   className: ''
 
   events: {}
-
+  el: $ '.container'
   initialize: () ->
-    @listenTo @model, 'change', @render
+    # @listenTo @model, 'change', @render
+    @render()
 
   render: () ->
-    @$el.html @template(@model.toJSON())
+    @$el.html @template("""@model.toJSON()""")
