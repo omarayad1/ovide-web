@@ -11,5 +11,11 @@ ide.on 'route:main', ->
     mainView.render()
     editorView = new OvideWeb.Views.Editor()
     editorView.render()
+    optionsView = new OvideWeb.Views.Options()
+    optionsView.setElement('#options')
+    optionsView.render()
+    logView = new OvideWeb.Views.Log()
+    logView.setElement('.message-log')
+    logView.render()
 
 Backbone.history.start()

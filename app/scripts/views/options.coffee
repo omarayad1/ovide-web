@@ -1,8 +1,8 @@
 'use strict';
 
-class OvideWeb.Views.Main extends Backbone.View
+class OvideWeb.Views.Options extends Backbone.View
 
-  template: JST['app/scripts/templates/main.ejs']
+  template: JST['app/scripts/templates/options.ejs']
 
   tagName: 'div'
 
@@ -11,7 +11,9 @@ class OvideWeb.Views.Main extends Backbone.View
   className: ''
 
   events: {}
-  el: $ '.container'
+
+  el: $ '#options'
+
   initialize: () ->
     # @listenTo @model, 'change', @render
     @render()

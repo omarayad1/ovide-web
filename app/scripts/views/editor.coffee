@@ -12,7 +12,7 @@ class OvideWeb.Views.Editor extends Backbone.View
 
   events: {}
 
-  el: $('#editor')
+  el: $ '#editor'
 
   initialize: () ->
     # @listenTo @model, 'change', @render
