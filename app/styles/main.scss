@@ -1,12 +1,7 @@
 $icon-font-path: "/bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
 
 @import 'bootstrap-sass-official/assets/stylesheets/bootstrap.scss';
-* {
-    margin:0;
-}
-html,body {
-    height:100%;
-}
+
 .browsehappy {
     margin: 0.2em 0;
     background: #ccc;
@@ -17,7 +12,6 @@ html,body {
 .container-narrow > hr {
     margin: 30px 0;
 }
-
 /* Main marketing message and sign up button */
 .jumbotron {
     text-align: center;
@@ -41,24 +35,34 @@ html,body {
 .container {
     margin-left: 0;
     padding-left: 0;
+    padding-right: 0;
+    width: 100%;
 }
 #options {
     margin-top: -1px;
-    width: 100%;
+    width: 85%;
     height: auto;
     z-index: -1;
+    float: right;
 }
 #editor {
-    width: 100%;
+    width: 85%;
     height: 500px;
     z-index: 99999;
+    float:right;
 }
 .message-log {
     margin-top: 0;
     min-height: 150px;
     max-height: 150px;
+    width: 85%;
     background-color: #002b36;
     color: #fdf6e3;
-    text-indent: 1px;
+    text-indent: 5em;
     overflow: scroll;
+    float: right;
+    padding-left: 5em;
+}
+.file-tree {
+    float: left;
 }

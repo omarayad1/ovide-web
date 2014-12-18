@@ -17,5 +17,8 @@ ide.on 'route:main', ->
     logView = new OvideWeb.Views.Log()
     logView.setElement('.message-log')
     logView.render()
+    treeView = new OvideWeb.Views.Tree()
+    treeView.setElement('.file-tree')
+    treeView.render()
 
 Backbone.history.start()
