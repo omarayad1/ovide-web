@@ -17,7 +17,7 @@ class OvideWeb.Views.Editor extends Backbone.View
   initialize: () ->
     # @listenTo @model, 'change', @render
     editor = ace.edit 'editor'
-    editor.setTheme "ace/theme/solarized_dark"
+    editor.setTheme "ace/theme/solarized_light"
     editor.setFontSize '13pt'
     editor.session.setMode "ace/mode/verilog"
     @render()
