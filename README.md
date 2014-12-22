@@ -4,9 +4,23 @@ Ovide Web interface designed with backbone.js
 
 ## Dependencies
 
-Building the interface requires the latest version of Node.js, Compass, Bower, Coffeescript and Grunt
+Make sure you have Bower, Node and Grunt installed
+
+Then run
+
+```
+bower install
+```
+
+```
+npm install
+```
  
 ## Building & Running
+Deploy by running
+```
+grunt serve
+```
 
 ## Running Tests
 
