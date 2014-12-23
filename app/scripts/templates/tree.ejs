@@ -2,6 +2,6 @@
 	<% _.each(collection, function(model){ %>
 	    <li data-jstree='{"icon": "glyphicon glyphicon-file"}'><%= model['filename'] %></li>
 	<% }); %>
-    <li data-jstree='{"icon": "glyphicon glyphicon-plus"}'>new file</li>
+    <li data-jstree='{"icon": "glyphicon glyphicon-plus"}' class='new-file' data-toggle="modal" data-target="#myModal">new file</li>
 
 </ul>

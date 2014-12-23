@@ -10,17 +10,13 @@ class OvideWeb.Views.Tree extends Backbone.View
 
     className: ''
 
-    events: {}
-
     el: $ '.file-tree'
-
     initialize: () ->
         @listenTo @collection, 'add', @render
-        @render()
+        $('.file-tree').on 'select_node.jstree', (e, nodeSel) ->
+            if nodeSel.node.li_attr.class != 'new-file'
+                $.get 'http://ovide-api.herokuapp.com/file/read/' + nodeSel.node.text, (data) ->
+                    OvideWeb.EditorData.set({data: data})
     render: () ->
         @$el.html @template({collection: @collection.toJSON()})
         $.jstree.create('.file-tree')
-        $('.file-tree').on 'select_node.jstree', (e, nodeSel) ->
-            $.post OvideWeb.EditorData.url, {filename: nodeSel.node.text}, (data) ->
-                OvideWeb.EditorData.set({data: data})
-

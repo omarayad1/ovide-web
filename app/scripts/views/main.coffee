@@ -10,7 +10,8 @@ class OvideWeb.Views.Main extends Backbone.View
 
   className: ''
 
-  events: {}
+  events: 
+    'click .new-file-save': 'saveFile'
   el: $ '.container'
   initialize: () ->
     # @listenTo @model, 'change', @render
@@ -18,3 +19,7 @@ class OvideWeb.Views.Main extends Backbone.View
 
   render: () ->
     @$el.html @template()
+
+  saveFile: ->
+    $.post('http://ovide-api.herokuapp.com/file/create', {'filename': $('.file-name-save').val()})
+    OvideWeb.Files.fetch()
