@@ -22,6 +22,5 @@ Deploy by running
 grunt serve
 ```
 
-## Running Tests
-
-## Licence
+# Roadmap
+- Multi-user support
