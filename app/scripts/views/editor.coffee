@@ -13,13 +13,14 @@ class OvideWeb.Views.Editor extends Backbone.View
   events: {}
 
   el: $ '#editor'
-
+  editor: ->
+    ace.edit 'editor'
   initialize: () ->
-    # @listenTo @model, 'change', @render
-    editor = ace.edit 'editor'
-    editor.setTheme "ace/theme/solarized_light"
-    editor.setFontSize '13pt'
-    editor.session.setMode "ace/mode/verilog"
-    @render()
+    @editor = ace.edit 'editor'
+    @editor.setTheme "ace/theme/solarized_light"
+    @editor.setFontSize '13pt'
+    @editor.session.setMode "ace/mode/verilog"
+    @listenTo @model, 'change', @render
   render: () ->
-    @$el.html @template()
+    @editor.setValue(@model.toJSON()['data'])
+    @$el.html @template(@model.toJSON())

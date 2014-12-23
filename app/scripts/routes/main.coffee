@@ -7,9 +7,10 @@ class OvideWeb.Routers.Main extends Backbone.Router
 ide = new OvideWeb.Routers.Main()
 
 ide.on 'route:main', ->
+    OvideWeb.EditorData = new OvideWeb.Models.EditorData({'data': 'module verilogIsFun()\n endmodule'})
     mainView = new OvideWeb.Views.Main()
     mainView.render()
-    editorView = new OvideWeb.Views.Editor()
+    editorView = new OvideWeb.Views.Editor({'model': OvideWeb.EditorData })
     editorView.render()
     optionsView = new OvideWeb.Views.Options()
     optionsView.setElement('#options')
