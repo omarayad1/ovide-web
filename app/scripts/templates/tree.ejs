@@ -1,5 +1,7 @@
 <ul>
-    <li data-jstree='{"icon": "glyphicon glyphicon-file"}'>batee5.v</li>
-    <li data-jstree='{"icon": "glyphicon glyphicon-file"}'>batee5_tb.v</li>
+	<% _.each(collection, function(model){ %>
+	    <li data-jstree='{"icon": "glyphicon glyphicon-file"}'><%= model['filename'] %></li>
+	<% }); %>
     <li data-jstree='{"icon": "glyphicon glyphicon-plus"}'>new file</li>
+
 </ul>

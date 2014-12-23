@@ -13,8 +13,6 @@ class OvideWeb.Views.Editor extends Backbone.View
   events: {}
 
   el: $ '#editor'
-  editor: ->
-    ace.edit 'editor'
   initialize: () ->
     @editor = ace.edit 'editor'
     @editor.setTheme "ace/theme/solarized_light"

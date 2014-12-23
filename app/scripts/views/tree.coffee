@@ -2,27 +2,25 @@
 
 class OvideWeb.Views.Tree extends Backbone.View
 
-  template: JST['app/scripts/templates/tree.ejs']
+    template: JST['app/scripts/templates/tree.ejs']
 
-  tagName: 'div'
+    tagName: 'div'
 
-  id: ''
+    id: ''
 
-  className: ''
+    className: ''
 
-  events: {}
+    events: {}
 
-  el: $ '.file-tree'
+    el: $ '.file-tree'
 
-  initialize: () ->
-    # @listenTo @model, 'change', @render
-    $ ->
-        $('.file-tree').jstree()
-        $('.file-tree').on 'select_node.jstree', (e, data) ->
-            $.post 'http://ovide-api.herokuapp.com/file/read/', { 'filename': data.node.text }, (data) ->
-                OvideWeb.EditorData.set({'data': data})
-    @render()
-  render: () ->
-    # @$el.html @template(@model.toJSON())
+    initialize: () ->
+        @listenTo @collection, 'add', @render
+        @render()
+    render: () ->
+        @$el.html @template({collection: @collection.toJSON()})
+        $.jstree.create('.file-tree')
+        $('.file-tree').on 'select_node.jstree', (e, nodeSel) ->
+            $.post OvideWeb.EditorData.url, {filename: nodeSel.node.text}, (data) ->
+                OvideWeb.EditorData.set({data: data})
 
-    @$el.html @template()

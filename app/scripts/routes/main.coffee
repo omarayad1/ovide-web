@@ -7,6 +7,8 @@ class OvideWeb.Routers.Main extends Backbone.Router
 ide = new OvideWeb.Routers.Main()
 
 ide.on 'route:main', ->
+    window.OvideWeb.Files = new OvideWeb.Collections.Files()
+    OvideWeb.Files.fetch()
     OvideWeb.EditorData = new OvideWeb.Models.EditorData({'data': 'module verilogIsFun()\n endmodule'})
     mainView = new OvideWeb.Views.Main()
     mainView.render()
@@ -18,7 +20,7 @@ ide.on 'route:main', ->
     logView = new OvideWeb.Views.Log()
     logView.setElement('.message-log')
     logView.render()
-    treeView = new OvideWeb.Views.Tree()
+    treeView = new OvideWeb.Views.Tree({'collection': OvideWeb.Files})
     treeView.setElement('.file-tree')
     treeView.render()
 
