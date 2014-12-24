@@ -16,6 +16,7 @@ class OvideWeb.Views.Options extends Backbone.View
     'click .compile': 'compile'
     'click .tb-gen': 'generateTestbench'
     'click .get-output': 'getOutput'
+    'click .wave-gen': 'getWave'
 
   el: $ '#options'
 
@@ -28,13 +29,19 @@ class OvideWeb.Views.Options extends Backbone.View
 
   getSelectedNode: ->
     $('.file-tree').jstree()
-    return $('#' + $('.file-tree').jstree().get_selected()[0]).text()
+    try
+      return $('#' + $('.file-tree').jstree().get_selected()[0]).text()
+    catch err
+      return null
   
   saveFile: ->
     editor = ace.edit 'editor'
     content = editor.getSession().getValue()
     filename = @getSelectedNode
-    $.post('http://ovide-api.herokuapp.com/file/update', {filename: filename, file_content: content})
+    if filename is not null
+      $.post('http://ovide-api.herokuapp.com/file/update', {filename: filename, file_content: content})
+    else
+      $('.message-log').text('you have to create a new file first')
 
   checkSyntax: ->
     @saveFile
@@ -53,4 +60,9 @@ class OvideWeb.Views.Options extends Backbone.View
   getOutput: ->
     @saveFile
     $.post 'http://ovide-api.herokuapp.com/verilog/get_output', {'filename': @getSelectedNode()}, (data) ->
+      $('.message-log').text(data)
+  
+  getWave: ->
+    @saveFile
+    $.post 'http://ovide-api.herokuapp.com/verilog/get_wave', {'filename': @getSelectedNode()}, (data) ->
       $('.message-log').text(data)
